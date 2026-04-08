@@ -1,12 +1,10 @@
-﻿import createMiddleware from 'next-intl/middleware';
-import { locales } from './src/i18n/request';
-
-export default createMiddleware({
-  locales,
-  defaultLocale: 'vi',
-  localePrefix: 'always'
-});
-
+﻿// === middleware.ts ===
+import createMiddleware from 'next-intl/middleware';
+import { routing } from '@/i18n/request';
+export default createMiddleware(routing);
 export const config = {
-  matcher: ['/((?!api|_next|.*\..*).*)']
+  matcher: [
+    // Skip all internal paths (_next)
+    '/((?!api|_next|.*\\..*).*)',
+  ],
 };
