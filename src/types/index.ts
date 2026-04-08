@@ -1,143 +1,91 @@
-// Realm cultivation stages
-export type Realm = 'Luyện Khí' | 'Trúc Cơ' | 'Kết Đan' | 'Nguyên Anh' | 'Hóa Thần';
+﻿export type Locale = 'vi' | 'en';
 
-// User roles in IT team
 export type Role = 'L1' | 'L2' | 'QA' | 'DevOps' | 'PM' | 'Mentor';
 
-// Ticket priority levels
 export type Priority = 'P1' | 'P2' | 'P3' | 'P4';
 
-// Ticket status
 export type TicketStatus = 'Open' | 'In Progress' | 'Resolved' | 'Closed';
 
-// Worklog entry
-export interface Worklog {
-  id: string;
-  userId: string;
-  ticketId: string;
-  seconds: number;
-  createdAt: string;
-  comment?: string;
-}
+export type Realm = 'Luyện Khí' | 'Trúc Cơ' | 'Kết Đan' | 'Nguyên Anh' | 'Hóa Thần';
 
-// User profile
 export interface User {
   id: string;
   name_vi: string;
   name_en: string;
   role: Role;
-  avatar?: string;
+  level: number;
+  xp: number;
+  nextLevelXp: number;
+  realm: Realm;
+  slaCompliance: number;
+  kbContributions: number;
+  totalTickets: number;
+  tâmMaStatus?: boolean;
 }
 
-// Ticket item
 export interface Ticket {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   priority: Priority;
   status: TicketStatus;
-  assignees: string[]; // user IDs
+  assignees: string[];
   createdAt: string;
   resolvedAt?: string;
-  slaDeadline: string;
+  slaGoal: number; // minutes
   worklogs: Worklog[];
 }
 
-// Knowledge Base article
+export interface Worklog {
+  userId: string;
+  timeSpent: number; // seconds
+  comment?: string;
+  loggedAt: string;
+}
+
 export interface KB_Article {
   id: string;
   title: string;
-  content: string;
   authorId: string;
+  content: string;
   views: number;
   likes: number;
   comments: number;
   createdAt: string;
   updatedAt: string;
-  tags: string[];
 }
 
-// SLA calculation result
 export interface SLA_Result {
+  ticketId: string;
+  isCompliant: boolean;
+  timeRemaining?: number; // minutes
+  timeBreached?: number; // minutes
   basePoints: number;
   bonusPoints: number;
   penaltyPoints: number;
-  totalPoints: number;
-  isBreached: boolean;
-  timeRemaining: number; // minutes
-  timeGoal: number; // minutes
+  finalPoints: number;
 }
 
-// Cultivation stats for gamification
 export interface Cultivation_Stats {
+  userId: string;
   totalXP: number;
   currentLevel: number;
-  levelProgress: number; // XP within current level
-  nextLevelXp: number; // XP needed for next level
+  levelProgress: number;
+  nextLevelXP: number;
   realm: Realm;
-  slaCompliance: number; // percentage
+  slaBonus: number;
   kbScore: number;
-  tamMaStatus: 'Thanh Tịnh' | 'Tâm Ma' | 'Tẩu Hỏa Nhập Ma';
+  ticketPoints: number;
 }
 
-// Enhanced user with cultivation data
-export interface UserWithStats extends User, Cultivation_Stats {}
-
-// Global dashboard statistics
-export interface GlobalStats {
-  totalTickets: number;
-  avgSLA: number;
-  topPerformer: string;
-  teamLevel: number;
-  totalKB: number;
-}
-
-// Snapshot data structure
-export interface SnapshotData {
-  users: UserWithStats[];
-  tickets: Ticket[];
-  kb: KB_Article[];
-  globalStats: GlobalStats;
-  generatedAt: string;
-}
-
-// Dashboard store state
 export interface DashboardState {
-  selectedUser: string | null;
-  dateRange: { start: string; end: string };
-  theme: 'xianxia';
-  lang: 'vi' | 'en';
-}
-
-// KPICard props
-export interface KPICardProps {
-  title: string;
-  value: string | number;
-  trend?: 'up' | 'down' | 'neutral';
-  trendValue?: string;
-  icon: React.ElementType;
-  glow?: 'gold' | 'crimson' | 'jade';
-}
-
-// LevelRing props
-export interface LevelRingProps {
-  level: number;
-  currentXP: number;
-  maxXP: number;
-  realmName: Realm;
-  size?: number;
-}
-
-// XPBar props
-export interface XPBarProps {
-  current: number;
-  max: number;
-  milestones?: number[];
-  showLabels?: boolean;
-}
-
-// PriorityBadge props
-export interface PriorityBadgeProps {
-  priority: Priority;
-  size?: 'sm' | 'md' | 'lg';
+  users: User[];
+  tickets: Ticket[];
+  kbArticles: KB_Article[];
+  globalStats: {
+    totalTickets: number;
+    avgSLA: number;
+    topPerformer?: string;
+    teamLevel: number;
+  };
 }

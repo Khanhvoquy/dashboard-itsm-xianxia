@@ -1,0 +1,43 @@
+﻿@import './theme.css';
+@import './keyframes.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 232, 220, 200;
+  --background-start-rgb: 26, 21, 16;
+  --background-end-rgb: 45, 36, 24;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Noto Serif SC', serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .xianxia-card {
+    @apply bg-xianxia-parchment/80 border border-xianxia-bronze rounded-lg backdrop-blur-sm shadow-inset-ink transition-all duration-300;
+  }
+
+  .xianxia-card-hover {
+    @apply xianxia-card hover:shadow-glow-gold hover:-translate-y-1;
+  }
+
+  .xianxia-text-glow {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+}
