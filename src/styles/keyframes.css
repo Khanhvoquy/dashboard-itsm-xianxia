@@ -1,0 +1,230 @@
+/* Xianxia Animation Keyframes */
+
+/**
+ * Pulse glow animation
+ * Creates rhythmic glowing effect like spiritual energy pulsing
+ */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes pulse-crimson {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(139, 0, 0, 0.6);
+  }
+}
+
+@keyframes pulse-jade {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 168, 107, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(0, 168, 107, 0.6);
+  }
+}
+
+/**
+ * Shimmer animation
+ * Light sliding horizontally across element (for progress bars)
+ */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/**
+ * Float animation
+ * Gentle up-down hovering motion
+ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/**
+ * Ink reveal animation
+ * Content fades in while sliding up (like ink spreading on paper)
+ */
+@keyframes ink-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Particle drift
+ * Random floating motion for spiritual particles
+ */
+@keyframes particle-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(10px, -20px) rotate(90deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-10px, -40px) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(10px, -20px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+/**
+ * Gradient shift
+ * Animated gradient background
+ */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/**
+ * Spin slow
+ * For rotating decorative elements
+ */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * Fade in
+ * Simple opacity transition
+ */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/**
+ * Scale in
+ * Zoom in effect
+ */
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * Slide up
+ * For dropdown/expand animations
+ */
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * Mist/fog animation
+ * For background atmosphere
+ */
+@keyframes mist-flow {
+  0% {
+    transform: translateX(-10%) translateY(-5%);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(10%) translateY(5%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-10%) translateY(-5%);
+    opacity: 0.3;
+  }
+}
+
+/* Utility classes for animations */
+.animate-pulse-xianxia {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-pulse-crimson {
+  animation: pulse-crimson 3s ease-in-out infinite;
+}
+
+.animate-pulse-jade {
+  animation: pulse-jade 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-ink-reveal {
+  animation: ink-reveal 0.4s ease-out forwards;
+}
+
+.animate-particle-drift {
+  animation: particle-drift 8s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 5s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-mist-flow {
+  animation: mist-flow 10s ease-in-out infinite;
+}
