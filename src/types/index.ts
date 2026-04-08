@@ -79,13 +79,8 @@ export interface Cultivation_Stats {
 }
 
 export interface DashboardState {
-  users: User[];
-  tickets: Ticket[];
-  kbArticles: KB_Article[];
-  globalStats: {
-    totalTickets: number;
-    avgSLA: number;
-    topPerformer?: string;
-    teamLevel: number;
-  };
+  selectedUser: string | null;
+  dateRange: { start: string; end: string };
+  theme: string;
+  lang: 'vi' | 'en';
 }

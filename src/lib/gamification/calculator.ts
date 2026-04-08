@@ -1,5 +1,5 @@
 ﻿import { GAMIFICATION_CONFIG, getXPForNextLevel, getRealmForLevel } from './config';
-import type { Worklog, SLA_Result, Cultivation_Stats, Role } from '@/types';
+import type { Worklog, SLA_Result, Cultivation_Stats, Role, Priority } from '@/types';
 
 /**
  * Calculate SLA Bonus with Exponential Decay
@@ -34,6 +34,14 @@ export const calculateSLAPenalty = (timeBreached: number): number => {
 };
 
 /**
+ * Get SLA time goal in minutes based on priority
+ */
+export const getSLATimeGoal = (priority: Priority): number => {
+  const goals: Record<Priority, number> = { P1: 240, P2: 480, P3: 1440, P4: 4320 };
+  return goals[priority];
+};
+
+/**
  * Calculate contribution for multi-assignee tickets
  * Contribution_k = W_k / ΣW_j
  */
@@ -49,16 +57,20 @@ export const calculateContribution = (
 };
 
 /**
- * Calculate final points for a user on a ticket
+ * Calculate final points for a user on a ticket with multi-assignee support
  * P_k = Contribution_k × P_SLA × M_role
  */
-export const calculateTicketPoints = (
-  contribution: number,
-  slaPoints: number,
-  role: Role
+export const calculateMultiAssigneePoints = (
+  worklogs: Worklog[],
+  userId: string,
+  role: Role,
+  slaResult: { isBreached: boolean; points: number }
 ): number => {
+  const userWorklog = worklogs.find(w => w.userId === userId)?.timeSpent || 0;
+  const contribution = calculateContribution(userWorklog, worklogs);
   const multiplier = GAMIFICATION_CONFIG.roleMultipliers[role] || 1.0;
-  return contribution * slaPoints * multiplier;
+  
+  return contribution * slaResult.points * multiplier;
 };
 
 /**
@@ -72,6 +84,43 @@ export const calculateKBPoints = (
 ): number => {
   const { viewPoints, likePoints, commentPoints } = GAMIFICATION_CONFIG.kb;
   return (views * viewPoints) + (likes * likePoints) + (comments * commentPoints);
+};
+
+/**
+ * Get level info from total XP
+ */
+export const getLevelFromXP = (totalXP: number) => {
+  let level = 1;
+  let remainingXP = totalXP;
+  let levelXP = getXPForNextLevel(level);
+  
+  while (remainingXP >= levelXP) {
+    remainingXP -= levelXP;
+    level++;
+    levelXP = getXPForNextLevel(level);
+  }
+  
+  return {
+    level,
+    levelProgress: remainingXP,
+    nextLevelXp: levelXP,
+  };
+};
+
+/**
+ * Get realm name from level
+ */
+export const getRealmFromLevel = (level: number): string => {
+  return getRealmForLevel(level);
+};
+
+/**
+ * Check Tâm Ma status based on SLA compliance
+ */
+export const getTamMaStatus = (slaCompliance: number): 'Thanh Tịnh' | 'Tâm Ma' | 'Tẩu Hỏa Nhập Ma' => {
+  if (slaCompliance >= 90) return 'Thanh Tịnh';
+  if (slaCompliance >= 70) return 'Tâm Ma';
+  return 'Tẩu Hỏa Nhập Ma';
 };
 
 /**
