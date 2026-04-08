@@ -1,18 +1,44 @@
 ```
-# Environment
+# Dependencies
+node_modules/
+
+# Environment variables
 .env
 .env.local
 .env.*
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
 
-# Editors
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
+*.tmp
 
-# Dependencies
-node_modules/
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.mypy_cache/
 ```
