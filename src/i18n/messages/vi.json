@@ -1,123 +1,41 @@
-{
-  "common": {
-    "loading": "Đang tải...",
-    "error": "Lỗi",
-    "success": "Thành công",
-    "cancel": "Hủy",
-    "confirm": "Xác nhận",
-    "save": "Lưu",
-    "delete": "Xóa",
-    "edit": "Sửa",
-    "view": "Xem",
-    "search": "Tìm kiếm",
-    "filter": "Lọc",
-    "export": "Xuất",
-    "import": "Nhập"
-  },
+﻿{
   "dashboard": {
-    "title": "Bảng Điều Khiển ITSM",
-    "subtitle": "Hệ Thống Tu Luyện Công Nghệ",
-    "overview": "Tổng Quan",
+    "title": "Bảng Tu Luyện",
     "cultivation": {
-      "level": "Cấp Độ",
+      "level": "Cảnh Giới",
       "xp": "Kinh Nghiệm",
-      "realm": "Cảnh Giới",
-      "progress": "Tiến Độ",
-      "nextLevel": "Cấp Tiếp Theo",
+      "progress": "Tiến Độ Tu Luyện",
       "currentXP": "XP Hiện Tại",
-      "maxXP": "XP Tối Đa"
+      "nextLevel": "Cảnh Giới Tiếp Theo"
     },
     "stats": {
       "totalTickets": "Tổng Ticket",
-      "resolvedTickets": "Ticket Đã Giải Quyết",
       "slaCompliance": "Tỷ Lệ SLA",
-      "kbContributions": "Đóng Góp KB",
-      "teamPerformance": "Hiệu Suất Đội Nhóm"
-    }
-  },
-  "cultivation": {
-    "realms": {
-      "luyenKhi": "Luyện Khí",
-      "trucCo": "Trúc Cơ",
-      "ketDan": "Kết Đan",
-      "nguyenAnh": "Nguyên Anh",
-      "hoaThan": "Hóa Thần"
-    },
-    "tamMa": {
-      "thanhTinh": "Thanh Tịnh",
-      "tamMa": "Tâm Ma",
-      "taoHoaNhapMa": "Tẩu Hỏa Nhập Ma"
-    },
-    "aura": "Hào Quang",
-    "meditation": "Thiền Định",
-    "breakthrough": "Đột Phá"
-  },
-  "tickets": {
-    "title": "Danh Sách Ticket",
-    "priority": "Độ Ưu Tiên",
-    "status": "Trạng Thái",
-    "assignee": "Người Xử Lý",
-    "created": "Ngày Tạo",
-    "deadline": "Hạn SLA",
-    "description": "Mô Tả",
-    "worklog": "Nhật Ký Công Việc",
-    "priorities": {
-      "p1": "P1 - Khẩn Cấp",
-      "p2": "P2 - Cao",
-      "p3": "P3 - Trung Bình",
-      "p4": "P4 - Thấp"
-    },
-    "statuses": {
-      "open": "Mở",
-      "inProgress": "Đang Xử Lý",
-      "resolved": "Đã Giải Quyết",
-      "closed": "Đã Đóng"
+      "kbContributions": "Đóng góp Tri Thức",
+      "teamPerformance": "Hiệu Suất Đội"
     }
   },
   "leaderboard": {
-    "title": "Bảng Xếp Hạng",
+    "title": "Bảng Xếp Hạng Đạo Hữu",
     "rank": "Hạng",
-    "member": "Thành Viên",
-    "role": "Vai Trò",
-    "level": "Cấp",
+    "member": "Đạo Hữu",
+    "role": "Chức Vụ",
+    "level": "Cảnh Giới",
     "xp": "XP",
-    "sla": "SLA",
-    "kb": "KB",
-    "totalScore": "Tổng Điểm"
+    "sla": "SLA"
+  },
+  "tickets": {
+    "title": "Danh Sách Linh Vụ",
+    "description": "Mô Tả",
+    "priority": "Độ Khẩn Cấp",
+    "status": "Trạng Thái",
+    "assignee": "Người Xử Lý"
   },
   "kb": {
-    "title": "Kho Tri Thức",
-    "articles": "Bài Viết",
+    "title": "Tàng Kinh Các",
+    "author": "Tác Giả",
     "views": "Lượt Xem",
     "likes": "Thích",
-    "comments": "Bình Luận",
-    "author": "Tác Giả",
-    "tags": "Thẻ",
-    "createdAt": "Ngày Tạo",
-    "updatedAt": "Cập Nhật"
-  },
-  "navigation": {
-    "home": "Trang Chủ",
-    "dashboard": "Bảng Điều Khiển",
-    "leaderboard": "Xếp Hạng",
-    "tickets": "Ticket",
-    "kb": "Tri Thức",
-    "settings": "Cài Đặt"
-  },
-  "roles": {
-    "l1": "Junior Dev (L1)",
-    "l2": "Senior Dev (L2)",
-    "qa": "QA",
-    "devops": "DevOps",
-    "pm": "PM",
-    "mentor": "Mentor"
-  },
-  "sla": {
-    "bonus": "Thưởng SLA",
-    "penalty": "Phạt SLA",
-    "breached": "Quá Hạn",
-    "met": "Đạt SLA",
-    "timeRemaining": "Thời Gian Còn Lại",
-    "timeGoal": "Thời Gian Mục Tiêu"
+    "comments": "Bình Luận"
   }
 }
