@@ -45,21 +45,22 @@ const userStats = users.map((user) => {
       const timeRemaining = (slaDeadline - resolvedAt) / 60000; // minutes
       const timeGoal = getSLATimeGoal(ticket.priority);
       
-      const slaResult = calculateSLABonus(timeRemaining, timeGoal, ticket.priority);
+      const points = calculateSLABonus(timeRemaining, timeGoal);
+      const isBreached = timeRemaining < 0;
       
-      if (!slaResult.isBreached) {
+      if (!isBreached) {
         metSLA++;
       }
       
       // Calculate points from this ticket
-      const points = calculateMultiAssigneePoints(
+      const ticketPoints = calculateMultiAssigneePoints(
         ticket.worklogs,
         user.id,
         user.role,
-        slaResult
+        { isBreached, points }
       );
       
-      totalXP += Math.round(points);
+      totalXP += Math.round(ticketPoints);
     }
   });
   
@@ -83,7 +84,7 @@ const userStats = users.map((user) => {
     : 100;
   
   // Get Tâm Ma status
-  const tamMaStatus = getTamMaStatus(slaCompliance) as 'Thanh Tịnh' | 'Tâm Ma' | 'Tẩu Hỏa Nhập Ma';
+  const tamMaStatus = getTamMaStatus(slaCompliance);
   
   return {
     ...user,
